@@ -37,3 +37,31 @@ public:
         
     }
 };
+
+
+// another approach
+class Solution {
+public:
+    int findShortestSubArray(vector<int>& nums) {
+        unordered_map<int,vector<int>> ind;
+        int len = nums.size();
+         int temp_len = nums.size();
+        size_t deg = 0;
+        for(int i=0;i<len;++i)
+        {
+            ind[nums[i]].push_back(i);
+        }
+
+        for(const auto& p : ind)
+        {
+            deg = max(deg,p.second.size());
+        }
+       
+        for(const auto& p: ind)
+        {
+            if(p.second.size()!=deg) continue;
+            temp_len = min(temp_len,p.second.back()-p.second.front()+1);
+        }
+        return temp_len;
+    }
+};
