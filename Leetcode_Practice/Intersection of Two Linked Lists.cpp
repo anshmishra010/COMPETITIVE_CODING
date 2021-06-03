@@ -5,19 +5,19 @@ public:
         //first approach , in this we will use hashmap logic , we will traverse through ll b and store it in hashmap and then check those value in ll a , if found we'll return .
         //but we have to compromise in space complexity
         
-        // set<ListNode*> nb;
-        // //storing the ADDRESS
-        // while(headB != NULL){
-        //     nb.insert(headB);
-        //     headB=  headB->next;
-        // }
-        // while(headA != NULL){
-        //     if(nb.find(headA) != nb.end()){
-        //         return headA;
-        //     }
-        //     headA = headA->next;
-        // }
-        // return NULL;
+        set<ListNode*> nb;
+        //storing the ADDRESS
+        while(headB != NULL){
+            nb.insert(headB);
+            headB=  headB->next;
+        }
+        while(headA != NULL){
+            if(nb.find(headA) != nb.end()){
+                return headA;
+            }
+            headA = headA->next;
+        }
+        return NULL;
         
         //---------------------------------------------------------------------
         
