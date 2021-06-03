@@ -5,6 +5,7 @@ Contributions are always welcomed !
 Hope this helps you..
 
 - [DSA_Learning_CODECHEF](DSA_Learning_CODECHEF)
+- [DEMUX Academy June batch codes](Demux_Academy_codes)
 - [Geeks_For_Geeks](Geeks_For_Geeks)
 - [HackerRank_10_Days_Of_JAVASCRIPT](HackerRank_10_Days_Of_JAVASCRIPT)
 - [HackerRank_Problem_Solving](HackerRank_Problem_Solving)
