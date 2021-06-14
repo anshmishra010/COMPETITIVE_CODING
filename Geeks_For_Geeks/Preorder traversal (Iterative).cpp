@@ -1,18 +1,22 @@
 vector<int> preOrder(Node* root)
 {
+    //code here
     vector<int> res;
-    stack<Node* > ns;
-    if(root == NULL) return NULL;
-    ns.push(root);
-
-    while(ns.empty() == false)
-    {
-        Node* node = ns.top();
-        res.push_back(node->data);
-        ns.pop();
-
-        if(node->right) ns.push(node->right);
-        if(node->left) ns.push(node->left);
+    stack<Node*> st;
+    Node* temp= NULL;
+    
+    st.push(root);
+    while(!st.empty()){
+        temp = st.top();
+        st.pop();
+        res.push_back(temp->data);
+        
+        // we will be firstly pushing right data and then left , as stack is LIFO
+        if(temp->right != NULL){
+            st.push(temp->right);
+        }
+        if(temp->left != NULL){
+            st.push(temp->left);
+        }
     }
     return res;
-}
