@@ -25,3 +25,31 @@ public:
         return res;
     }
 };
+
+
+
+        // iterative 
+vector<int> inorderTraversal(TreeNode* root) {
+    vector<int> res;
+    stack<TreeNode*> st;
+    TreeNode* pc = root;
+    
+    while(!st.empty() or pc)
+    {
+        if(pc)
+        {
+            st.push(pc);
+            pc = pc->left;
+                
+        }
+        else
+        {
+            TreeNode* temp = st.top();
+            res.push_back(temp->val);
+            st.pop();
+            pc = temp->right;  // will be going right side of the top element
+
+        }
+    }
+    return res;
+}
