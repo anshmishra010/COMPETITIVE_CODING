@@ -23,7 +23,7 @@ public:
         int profit =0;
         
         for(int i=1 ; i<len ; i++){
-            //it is assumed that you have purchased at i and sold at i-1;
+            //it is assumed that you have purchased at i-1 and sold at i;
             profit = profit + max(prices[i] - prices[i-1],0);
         }
         return profit;
