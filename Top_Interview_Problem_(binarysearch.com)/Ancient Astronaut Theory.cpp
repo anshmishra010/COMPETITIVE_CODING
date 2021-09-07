@@ -11,7 +11,7 @@ Explanation
 The only constraint is that a comes before c which comes before b .
 */
 bool solve(string dictionary, string s) {
-    // we can solve this in O(1) space in python but not in cpp
+    
     unordered_map<char,int> mp;
     for(auto i=0;i<dictionary.size();i++){
         mp.insert({dictionary[i],i+1});
@@ -28,4 +28,40 @@ bool solve(string dictionary, string s) {
         if(prev > cur) return false;
     }
     return true;
+}
+
+// O(1) space solution
+ bool solve(string dictionary, string s) {
+
+    int last_valid = 0;
+
+    for(int i=1;i<s.length();i++)
+    {
+        int x,y;
+        x = y = -1;
+
+        char a = s[last_valid];
+        char b = s[i];
+
+        x = dictionary.find(a) < dictionary.length() ? dictionary.find(a) : -1;
+
+        y = dictionary.find(b) < dictionary.length() ? dictionary.find(b) : -1;
+
+        if(x==-1 || y == -1)
+        {
+            if(y!=-1)last_valid = i;
+            continue;
+        }
+        else
+        {
+            if(x > y)return 0;
+
+            last_valid = i;
+        }
+
+    }
+
+    return 1;
+
+
 }
