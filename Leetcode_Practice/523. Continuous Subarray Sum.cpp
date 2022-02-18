@@ -8,23 +8,23 @@ x = n * k. 0 is always a multiple of k.
 
 class Solution {
 public:
-    int subarraySum(vector<int>& nums, int k) {
+    bool checkSubarraySum(vector<int>& nums, int k) {
         unordered_map<int,int> mp;
-        int n = nums.size();
-        int i =0,res=0, cursum=0;
+        int sum=0,n = nums.size();
+        mp[0]=-1;
         
-        while(i < n)
+        for(int i=0;i<n;i++)
         {
-            cursum += nums[i];
-            if(cursum == k) res++;
-            //it just means that a subarray exists which has a sum equal to k.
-            if(mp.find(cursum-k) != mp.end()) res+= mp[cursum-k];
-            mp[cursum]++;
-            i++;
+            sum += nums[i];
+            sum %= k;
+            if(mp.find(sum) != mp.end()){
+                if(i- mp[sum] > 1) return true;
+            }
+            else {
+                mp[sum] =i;
+            }
         }
-        return res;
-        
-        
+        return false;
     }
 };
 
